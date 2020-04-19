@@ -1,0 +1,32 @@
+<%- include("../partials/header") %>
+  <div class="container">
+    <div id="indexJumbotron" class="jumbotron text-center text-white">
+      <h1 class="display-3 mb-4 pt-5">All our Campgrounds</h1>
+    </div>
+  </div>
+
+  <div class = "container mt-5">
+    <div class="row"> 
+      <% campgrounds.forEach((campground) =>{ %>
+      <div class="col-sm-12 col-md-6 col-lg-4 justify-content-around mb-4">
+        <div class="card" style="min-width: 18rem;min-height:18rem;">
+          <img class="card-img-top" style="height:15rem;" src="<%= campground.image %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title text-center"><a href="/campgrounds/<%= campground._id %>"><%= campground.name %></a></h5>
+            <% if((campground.description.length) > 100){ %>
+              <p class="card-text text-center"><%= campground.description.substring(0, 100) %>...</p>
+            <% }else { %>
+              <p class="card-text text-center"><%= campground.description %></p>
+            <% } %>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <a href="/campgrounds/new" class="btn btn-primary">New campground</a>
+  </div>
+<br>
+
+<%- include("../partials/footer") %>
+
+
